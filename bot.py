@@ -81,7 +81,7 @@ async def main(nama, email, c):
         #Live chat
         await page.mouse.click(360, 669)
         await page.wait_for_timeout(2000)
-        print(f"Akun : ({c}) {nama} | Selesai")
+        print(f"Akun : ({c+1}) {nama} | Selesai")
         await browser.close()
 
 if __name__ == "__main__":
