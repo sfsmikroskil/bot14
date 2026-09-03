@@ -37,7 +37,8 @@ async def main(nama, email, c):
         await page.check("input.form-check-input")
         
         await page.wait_for_timeout(1000)
-        await page.screenshot(path=f"{c}_0reg.png")
+        if(c==0):
+            await page.screenshot(path=f"{c}_0reg.png")
         # 3. Regis
         await page.click("button[type='submit']")
         await page.wait_for_timeout(5000)
@@ -78,7 +79,7 @@ async def main(nama, email, c):
         await browser.close()
 
 if __name__ == "__main__":
-    jumlah = 200
+    jumlah = 500
     mulaiDari = 0
     print("Mulai...")
     for i in range (mulaiDari, mulaiDari+jumlah):
