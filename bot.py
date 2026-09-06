@@ -5,6 +5,11 @@ import random as r
 from data14 import contacts
 from PIL import Image
 
+def sisip(email, char):
+    pos = email.find('@')
+    emailBaru = email[0:pos] + char + email[pos:-1]
+    return emailBaru
+
 def getHP():
     hpAwalan = ["0852", "0822", "0853", "0857", "0813", "0822", "0823"]
     n1 = r.randint(1, 9999)
@@ -82,7 +87,7 @@ async def main(nama, email, c):
             #await page.mouse.click(170, 662) #poster kiri
             #await page.mouse.click(540, 662) #poster kanan
             await page.wait_for_timeout(2000)
-            if(c==0):            
+            if(c==0 or True):            
                 await page.screenshot(path=f"{c}_9last.png")
 
             print(f"Akun : ({c}) {nama} | Selesai")
@@ -92,7 +97,7 @@ async def main(nama, email, c):
         await browser.close()
 
 if __name__ == "__main__":
-    jumlah = 500
+    jumlah = 10
     mulaiDari = 0
     print("Mulai...")
     for i in range (mulaiDari, mulaiDari+jumlah):
@@ -100,6 +105,7 @@ if __name__ == "__main__":
         nama = contact["nama"]
         #nama = nama[3:-3]
         email = contact["email"]
+        email = sisip(email, ".14)
         c = i
         #print(f"Proses: {nama} ({email})")
         asyncio.run(main(nama, email, c))
